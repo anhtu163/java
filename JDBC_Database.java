@@ -47,18 +47,17 @@ public class JDBC_Database{
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }finally {
-            //finally block used to close resources
             try {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se2) {
-            }// nothing we can do
+            }
             try {
                 if (conn != null)
                     conn.close();
             } catch (SQLException se) {
                 se.printStackTrace();
-            }//end finally try
+            }
         }
     }
 }
