@@ -4,21 +4,20 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-interface Sim {
-	void calling();
-}
 
-class Phone1 implements Sim {
-	@Override
-	public void calling() {
-		System.out.println("1 Calling....");
+class Phone{
+	private String name;
+
+	public void setName(String name) {
+		this.name = name;
 	}
-}
 
-class Phone2 implements Sim {
-	@Override
+	public String getName() {
+		return name;
+	}
+
 	public void calling() {
-		System.out.println("2 Calling....");
+		System.out.println(" calling....");
 	}
 }
 
@@ -27,7 +26,8 @@ public class IocApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-		Sim s = context.getBean("sim", Sim.class);
+		Phone s = context.getBean("sim", Phone.class);
+		System.out.print(s.getName());
 		s.calling();
 	}
 
